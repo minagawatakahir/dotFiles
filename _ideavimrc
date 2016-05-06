@@ -1,0 +1,66 @@
+set hlsearch "検索文字列をハイライトする
+set incsearch "インクリメンタルサーチを行う
+set ignorecase "大文字と小文字を区別しない
+set smartcase "大文字と小文字が混在した言葉で検索を行った場合に限り、大文字と小文字を区別する
+set wrapscan "最後尾まで検索を終えたら次の検索で先頭に移る
+
+" 入力モード中に素早くjjと入力した場合はESCとみなす
+inoremap jj <Esc>
+
+" 日本語もいけるように
+inoremap <silent> っj <Esc>
+
+ " 入力モード中にC+[ でESC
+inoremap <C-]> <Esc>
+
+" ESCを二回押すことでハイライトを消す
+nmap <silent> <Esc><Esc> :nohlsearch<CR>
+
+" カーソル下の単語を * で検索
+vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v, '\/'), "\n", '\\n', 'g')<CR><CR>
+
+" 検索後にジャンプした際に検索単語を画面中央に持ってくる
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+
+" j, k による移動を折り返されたテキストでも自然に振る舞うように変更
+nnoremap j gj
+nnoremap k gk
+
+" vを二回で行末まで選択
+vnoremap v $h
+
+" TABにて対応ペアにジャンプ
+nnoremap <Tab> %
+vnoremap <Tab> %
+
+" Ctrl + hjkl でウィンドウ間を移動
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+ " 移動
+nnoremap <C-j> 5j
+nnoremap <C-k> 5k
+vnoremap <C-j> 5j
+vnoremap <C-k> 5k
+
+" tab
+nnoremap gr gT
+nnoremap gn tabnew
+
+nnoremap <Leader>o C-O
+
+
+" 日本語対策
+nnoremap あ a
+nnoremap い i
+nnoremap う u
+nnoremap お o
+nnoremap っd dd
+nnoremap っy yy
